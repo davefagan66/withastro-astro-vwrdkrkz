@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blackbird Gluten Free Bakery — Joyful Bakes for Every Body</title>
+  <meta name="description" content="Blackbird Gluten Free Bakery crafts delightful, 100% gluten-free treats with options for vegan, dairy-free, nut-free, and keto. Order online for pickup or delivery." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Using a highly-readable, system-first stack for performance & accessibility -->
+  <style>
+    :root{
+      --bg: #fffdf9;
+      --ink: #1b1b1b;
+      --muted: #6b6b6b;
+      --brand: #2d6a4f;       /* deep herbal green for trustworthy, fresh vibe */
+      --brand-2: #ffd166;     /* warm accent for CTAs */
+      --card: #ffffff;
+      --ring: #2d6a4f33;
+      --maxw: 1200px;
+      --radius: 14px;
+      --shadow: 0 6px 24px rgba(0,0,0,.08);
+      --shadow-sm: 0 3px 12px rgba(0,0,0,.06);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#0f1112; --ink:#f3f3f3; --muted:#b5b5b5; --card:#141618; --ring:#8bd3bd33; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important;}
+    }
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+      color:var(--ink); background:var(--bg); line-height:1.6; 
+    }
+    a{ color:var(--brand); text-decoration: none; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible{
+      outline: 3px solid var(--ring); outline-offset: 2px; border-radius: 8px;
+    }
+    .skip{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip:focus{ left: 12px; top: 12px; width:auto; height:auto; z-index:9999; background:#fff; color:#000; padding:.5rem .75rem; border-radius:8px; box-shadow: var(--shadow-sm); }
+
+    header{
+      position:sticky; top:0; background:color-mix(in oklab, var(--bg) 85%, white 15%);
+      backdrop-filter: blur(8px); z-index:50; border-bottom: 1px solid #0001;
+    }
+    .nav{ display:flex; align-items:center; gap:1rem; max-width:var(--maxw); margin:0 auto; padding: .75rem 1rem; }
+    .logo{ display:flex; align-items:center; gap:.6rem; font-weight:800; letter-spacing:.2px; }
+    .logo em{ font-style:normal; color:var(--brand); }
+    .nav a{ padding:.5rem .6rem; border-radius: 8px; }
+    .nav .cta{ margin-left:auto; background: var(--brand); color:white; padding:.6rem 1rem; border-radius: 10px; font-weight:700; box-shadow: var(--shadow-sm); }
+    .nav .cta:hover{ filter: brightness(1.08); }
+
+    .hero{
+      display:grid; grid-template-columns: 1fr; gap:1rem; max-width:var(--maxw); margin: 2rem auto; padding: 0 1rem;
+    }
+    .hero-card{
+      background: radial-gradient(1200px 600px at 80% -50%, color-mix(in oklab, var(--brand) 20%, transparent) 0, transparent 60%), var(--card);
+      border-radius: calc(var(--radius) * 1.5);
+      box-shadow: var(--shadow); padding: clamp(1rem, 3vw, 2rem);
+      display:grid; grid-template-columns: 1.1fr .9fr; gap: clamp(1rem, 4vw, 2rem);
+    }
+    @media (max-width: 900px){ .hero-card{ grid-template-columns: 1fr; } }
+
+    .hero h1{ font-size: clamp(1.8rem, 3.8vw, 3rem); line-height: 1.15; margin:.2rem 0; }
+    .kicker{ text-transform: uppercase; letter-spacing: .14em; font-size:.78rem; color: var(--muted); font-weight:700; }
+    .hero p{ font-size: clamp(1rem, 1.3vw, 1.125rem); color: var(--muted); margin: .5rem 0 1rem; }
+    .badges{ display:flex; flex-wrap:wrap; gap:.5rem; }
+    .badge{ border:1px dashed #0002; padding:.35rem .6rem; border-radius:999px; background: #fff6; font-weight:700; }
+    .actions{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top:.5rem; }
+    .btn{ display:inline-flex; align-items:center; gap:.5rem; padding:.7rem 1rem; border-radius:12px; border:1px solid #0000; background:#f7f7f7; }
+    .btn.primary{ background: var(--brand); color:white; font-weight:800; }
+    .btn.accent{ background: var(--brand-2); color:#1b1b1b; font-weight:800; }
+    .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+
+    .hero figure{ margin:0; position: relative; aspect-ratio: 4/3; border-radius: 16px; overflow:hidden; box-shadow: var(--shadow); }
+    .hero img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+    .section{ max-width:var(--maxw); margin: 3rem auto; padding: 0 1rem; }
+    .section h2{ font-size: clamp(1.4rem, 2.6vw, 2rem); margin:.25rem 0 1rem; }
+    .tabs{ display:flex; flex-wrap:wrap; gap:.5rem; }
+    .tab{ border:1px solid #0002; background:var(--card); border-radius: 999px; padding:.4rem .8rem; cursor:pointer; }
+    .tab[aria-pressed="true"]{ background: var(--brand); color:white; border-color: var(--brand); }
+    .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; }
+    .cards > article{ grid-column: span 4; background: var(--card); border-radius: 16px; overflow:hidden; box-shadow: var(--shadow-sm); border:1px solid #0001; display:flex; flex-direction:column; }
+    @media (max-width: 1000px){ .cards > article{ grid-column: span 6; } }
+    @media (max-width: 640px){ .cards > article{ grid-column: span 12; } }
+    .cards img{ width:100%; height: 220px; object-fit: cover; display:block; }
+    .card-body{ padding: .9rem 1rem 1rem; display:flex; flex-direction:column; gap:.6rem; }
+    .price{ font-weight:800; }
+    .diet{ display:flex; gap:.4rem; flex-wrap: wrap; }
+    .diet span{ background:#f3f3f3; border-radius: 999px; padding:.2rem .5rem; font-size:.85rem; }
+    .diet .ok{ background: #d1f5e1; }
+    .diet .warn{ background: #fff0d6; }
+
+    .testimonial{ background: linear-gradient(180deg, #fff0, color-mix(in oklab, var(--brand) 10%, transparent) 100%); border:1px solid #0001; border-radius:16px; padding:1rem; box-shadow: var(--shadow-sm); }
+    .quote{ font-size:1.1rem; font-weight:600; }
+    .avatar{ width:48px; height:48px; border-radius:999px; object-fit:cover; }
+
+    .banner{
+      background: linear-gradient(135deg, var(--brand) 0%, #40916c 100%);
+      color: white; border-radius: 16px; padding: 1.2rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; box-shadow: var(--shadow);
+    }
+    .banner b{ font-size:1.1rem; }
+    .banner .btn{ background:white; color:#0f1112; }
+
+    .details{ display:grid; grid-template-columns: 1fr 1fr; gap:1rem; }
+    @media (max-width: 900px){ .details{ grid-template-columns: 1fr; } }
+    .map{ border:0; width:100%; height: 320px; border-radius: 16px; box-shadow: var(--shadow-sm); }
+    .list{ background: var(--card); border:1px solid #0001; border-radius: 16px; padding: 1rem; box-shadow: var(--shadow-sm); }
+    .list li{ margin:.4rem 0; }
+
+    footer{ margin-top: 3rem; background: #0d0f10; color: #e8e8e8; }
+    .foot{ max-width:var(--maxw); margin:0 auto; padding: 2rem 1rem; display:grid; grid-template-columns: 2fr 1fr 1fr; gap: 1rem; }
+    @media (max-width: 900px){ .foot{ grid-template-columns: 1fr; } }
+    .brandmark{ font-weight:900; letter-spacing:.3px; }
+    .foot a{ color:#e8e8e8; }
+    .copyright{ text-align:center; font-size:.9rem; opacity:.8; padding: 0 1rem 1.6rem; }
+  </style>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Blackbird Gluten Free Bakery" />
+  <meta property="og:description" content="Joyful, 100% gluten-free bakes + vegan, dairy-free, nut-free & keto options. Order online for pickup or delivery." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://example.com/og-bakery.jpg" />
+  <meta property="og:url" content="https://example.com/" />
+
+  <!-- JSON-LD: LocalBusiness → Bakery (improves local visibility) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Bakery",
+    "name": "Blackbird Gluten Free Bakery",
+    "image": ["https://example.com/hero.jpg"],
+    "url": "https://example.com/",
+    "telephone": "+1-555-012-1234",
+    "priceRange": "$$",
+    "servesCuisine": ["Gluten-free","Vegan","Dairy-free","Nut-free","Keto"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Flourless Ave",
+      "addressLocality": "Your City",
+      "addressRegion": "ST",
+      "postalCode": "12345",
+      "addressCountry": "US"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.000, "longitude": -73.000 },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "09:00", "closes": "16:00" }
+    ],
+    "sameAs": ["https://instagram.com/yourbakery","https://facebook.com/yourbakery"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header role="banner" aria-label="Primary">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo" href="#top" aria-label="Home">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 16c6-8 10-8 16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="8" cy="10" r="2" stroke="currentColor" stroke-width="2"/></svg>
+        <span>Blackbird <em>Gluten Free</em> Bakery</span>
+      </a>
+      <a href="#menu">Menu</a>
+      <a href="#about">Our Story</a>
+      <a href="#visit">Visit</a>
+      <a href="#contact">Contact</a>
+      <a class="cta" href="#order" aria-label="Order online">Order Now</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-card" role="region" aria-label="Hero">
+        <div>
+          <div class="kicker">100% gluten-free • Made daily</div>
+          <h1>Joyful bakes for every body<span aria-hidden="true">🤍</span></h1>
+          <p>From brownies to boules, we craft treats that welcome everyone—vegan, dairy‑free, nut‑free, and keto options available every day.</p>
+          <div class="badges" aria-label="Dietary badges">
+            <span class="badge" aria-label="Gluten-free guaranteed">Gluten‑Free</span>
+            <span class="badge">Vegan</span>
+            <span class="badge">Dairy‑Free</span>
+            <span class="badge">Nut‑Free</span>
+            <span class="badge">Keto</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#order">Order for Pickup</a>
+            <a class="btn accent" href="#menu">Browse Menu</a>
+            <a class="btn" href="#dietary">Dietary Promise</a>
+          </div>
+        </div>
+        <figure>
+          <img src="hero.webp" alt="A rustic gluten-free sourdough loaf and assorted pastries on a wooden board" loading="eager" decoding="async" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="menu" aria-labelledby="menu-title">
+      <header>
+        <div class="kicker">Today’s Favorites</div>
+        <h2 id="menu-title">Menu with dietary filters</h2>
+        <div class="tabs" role="group" aria-label="Filter menu by diet">
+          <button class="tab" data-filter="all" aria-pressed="true">All</button>
+          <button class="tab" data-filter="vegan">Vegan</button>
+          <button class="tab" data-filter="dairy-free">Dairy‑Free</button>
+          <button class="tab" data-filter="nut-free">Nut‑Free</button>
+          <button class="tab" data-filter="keto">Keto</button>
+        </div>
+      </header>
+
+      <div class="grid cards" id="cards" aria-live="polite">
+        <!-- Card template examples -->
+        <article data-tags="vegan dairy-free nut-free">
+          <img src="items/blueberry-muffin.webp" alt="Gluten-free blueberry muffin with sugar crust" loading="lazy" decoding="async">
+          <div class="card-body">
+            <h3>Blueberry Morning Muffin</h3>
+            <div class="diet">
+              <span class="ok">GF</span><span class="ok">Vegan</span><span class="ok">Dairy‑Free</span><span class="ok">Nut‑Free</span>
+            </div>
+            <div class="price">$4.25</div>
+            <p>Moist crumb, bursting berries, hint of lemon zest.</p>
+            <a class="btn" href="#order">Add to Order</a>
+          </div>
+        </article>
+
+        <article data-tags="dairy-free nut-free">
+          <img src="items/choc-chip-cookie.webp" alt="Gluten-free chocolate chip cookie with sea salt" loading="lazy" decoding="async">
+          <div class="card-body">
+            <h3>Sea‑Salt Choc Chip</h3>
+            <div class="diet">
+              <span class="ok">GF</span><span class="ok">Dairy‑Free</span><span class="ok">Nut‑Free</span>
+              <span class="warn" title="Contains eggs">Contains Egg</span>
+            </div>
+            <div class="price">$3.50</div>
+            <p>Crisp edges, soft middle, flecks of sea salt.</p>
+            <a class="btn" href="#order">Add to Order</a>
+          </div>
+        </article>
+
+        <article data-tags="keto dairy-free">
+          <img src="items/keto-boule.webp" alt="Crusty keto almond-flour boule" loading="lazy" decoding="async">
+          <div class="card-body">
+            <h3>Keto Country Boule</h3>
+            <div class="diet"><span class="ok">GF</span><span class="ok">Keto</span><span class="ok">Dairy‑Free</span></div>
+            <div class="price">$9.75</div>
+            <p>Hearty, low‑carb loaf with a rustic crackle crust.</p>
+            <a class="btn" href="#order">Add to Order</a>
+          </div>
+        </article>
+
+        <article data-tags="vegan dairy-free">
+          <img src="items/raspberry-tart.webp" alt="Vegan raspberry tart with pistachio dust" loading="lazy" decoding="async">
+          <div class="card-body">
+            <h3>Raspberry Silk Tart</h3>
+            <div class="diet"><span class="ok">GF</span><span class="ok">Vegan</span><span class="ok">Dairy‑Free</span></div>
+            <div class="price">$6.75</div>
+            <p>Tangy fruit, buttery‑style gluten‑free crust.</p>
+            <a class="btn" href="#order">Add to Order</a>
+          </div>
+        </article>
+
+        <article data-tags="nut-free dairy-free">
+          <img src="items/birthday-cake.webp" alt="Two-layer birthday cake with rainbow sprinkles" loading="lazy" decoding="async">
+          <div class="card-body">
+            <h3>Celebration Cake (6”)</h3>
+            <div class="diet"><span class="ok">GF</span><span class="ok">Nut‑Free</span><span class="ok">Dairy‑Free</span></div>
+            <div class="price">$38.00</div>
+            <p>Customizable flavors & inscriptions.</p>
+            <a class="btn" href="#custom">Customize</a>
+          </div>
+        </article>
+
+        <article data-tags="vegan dairy-free nut-free">
+          <img src="items/cinnamon-roll.webp" alt="Iced cinnamon roll" loading="lazy" decoding="async">
+          <div class="card-body">
+            <h3>Sunday Cinnamon Roll</h3>
+            <div class="diet"><span class="ok">GF</span><span class="ok">Vegan</span><span class="ok">Nut‑Free</span><span class="ok">Dairy‑Free</span></div>
+            <div class="price">$4.95</div>
+            <p>Soft spirals, maple‑vanilla glaze.</p>
+            <a class="btn" href="#order">Add to Order</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="order" aria-labelledby="order-title">
+      <div class="banner">
+        <div>
+          <div class="kicker">Online Ordering</div>
+          <b id="order-title">Pickup & delivery windows open now</b>
+          <div>Order by 2pm for same‑day pickup. Local delivery 3–6pm.</div>
+        </div>
+        <div class="actions">
+          <a class="btn" href="https://order.example.com" aria-label="Order for pickup">Pickup</a>
+          <a class="btn" href="https://delivery.example.com" aria-label="Order for delivery">Delivery</a>
+          <a class="btn" href="#custom" aria-label="Custom cakes and catering">Custom Cakes</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="dietary" aria-labelledby="dietary-title">
+      <div class="details">
+        <div class="list">
+          <div class="kicker">Our Promise</div>
+          <h2 id="dietary-title">Safe for celiacs. Joyful for everyone.</h2>
+          <p>We are a 100% gluten‑free kitchen. Dedicated equipment, verified suppliers, and clearly labeled allergens mean you can order with confidence.</p>
+          <ul>
+            <li><strong>Dedicated facility:</strong> No wheat, barley, or rye on site.</li>
+            <li><strong>Clear labels:</strong> Vegan, dairy‑free, nut‑free, and keto tags on every item.</li>
+            <li><strong>Cross‑contact controls:</strong> Separate prep zones & sanitized tools.</li>
+          </ul>
+        </div>
+        <div class="testimonial" aria-label="Customer story">
+          <p class="quote">“As a celiac, I cried happy tears. The sourdough and cinnamon rolls? Unreal.”</p>
+          <div style="display:flex; align-items:center; gap:.6rem;">
+            <img class="avatar" src="avatars/alex.webp" alt="" loading="lazy">
+            <div><b>Alex P.</b><br><span class="muted">Local Guide</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="details">
+        <div>
+          <div class="kicker">Our Story</div>
+          <h2 id="about-title">From our family to your table</h2>
+          <p>Founded by Judy, a lifelong baker turned gluten‑free alchemist, Blackbird began with a promise to include everyone in celebrations. We mill some of our own blends, test every recipe repeatedly, and bake fresh each morning.</p>
+          <p>Stop in for a warm hello—or let us bring the party to you with custom cakes and event catering.</p>
+        </div>
+        <figure style="margin:0;">
+          <img src="about-bakery.webp" alt="The Blackbird team smiling behind the counter" loading="lazy" decoding="async" style="border-radius:16px; box-shadow:var(--shadow); width:100%; height:100%; object-fit:cover;">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="visit" aria-labelledby="visit-title">
+      <div class="details">
+        <div class="list">
+          <div class="kicker">Visit</div>
+          <h2 id="visit-title">Hours & location</h2>
+          <ul>
+            <li><strong>Weekdays:</strong> 8:00a – 6:00p</li>
+            <li><strong>Weekends:</strong> 9:00a – 4:00p</li>
+            <li><strong>Address:</strong> 123 Flourless Ave, Your City, ST</li>
+            <li><strong>Phone:</strong> <a href="tel:+15550121234">(555) 012‑1234</a></li>
+          </ul>
+          <p><a class="btn" href="https://maps.google.com/?q=123+Flourless+Ave">Get Directions</a></p>
+        </div>
+        <iframe class="map" title="Map to Blackbird Gluten Free Bakery" loading="lazy"
+          src="https://maps.google.com/maps?q=New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+      </div>
+    </section>
+
+    <section class="section" id="custom" aria-labelledby="custom-title">
+      <div class="banner" role="region" aria-label="Custom orders banner">
+        <div>
+          <div class="kicker">Custom & Catering</div>
+          <h2 id="custom-title" style="margin:0;">Your dream cake, carefully allergen‑aware</h2>
+        </div>
+        <a class="btn" href="mailto:orders@example.com?subject=Custom%20Cake%20Inquiry">Request a Quote</a>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="details">
+        <form class="list" aria-describedby="contact-help" onsubmit="event.preventDefault(); document.getElementById('contact-ok').hidden=false; this.reset();">
+          <div class="kicker">Say hello</div>
+          <h2 id="contact-title">Contact us</h2>
+          <p id="contact-help" class="muted">We reply within one business day.</p>
+          <label> Name <br><input name="name" required aria-required="true" style="width:100%; padding:.6rem; border-radius:10px; border:1px solid #0002;"></label><br><br>
+          <label> Email <br><input type="email" name="email" required aria-required="true" style="width:100%; padding:.6rem; border-radius:10px; border:1px solid #0002;"></label><br><br>
+          <label> Message <br><textarea name="message" rows="5" required style="width:100%; padding:.6rem; border-radius:10px; border:1px solid #0002;"></textarea></label><br><br>
+          <button class="btn primary" type="submit">Send message</button>
+          <p id="contact-ok" role="status" hidden>Thanks! We’ll be in touch shortly.</p>
+        </form>
+        <div class="list">
+          <div class="kicker">Follow</div>
+          <h2>Fresh bakes on Instagram</h2>
+          <p>@blackbirdglutenfree • Tag us to be featured!</p>
+          <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:.5rem;">
+            <img src="ig/1.webp" alt="Chocolate cake slice" loading="lazy" decoding="async" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:10px;">
+            <img src="ig/2.webp" alt="Morning pastry display" loading="lazy" decoding="async" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:10px;">
+            <img src="ig/3.webp" alt="Birthday cupcakes with candles" loading="lazy" decoding="async" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:10px;">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="foot">
+      <div>
+        <div class="brandmark">Blackbird Gluten Free Bakery</div>
+        <p>Joyful, 100% gluten‑free bakes. Vegan, dairy‑free, nut‑free & keto options daily.</p>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <p>123 Flourless Ave<br>Your City, ST 12345</p>
+        <p><a href="tel:+15550121234">(555) 012‑1234</a></p>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <p>Mon–Fri 8–6<br>Sat–Sun 9–4</p>
+      </div>
+    </div>
+    <div class="copyright">© <span id="year"></span> Blackbird Gluten Free Bakery • All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Accessible dietary filter logic
+    const tabs = document.querySelectorAll('.tab');
+    const cards = document.querySelectorAll('.cards > article');
+    tabs.forEach(tab=>{
+      tab.addEventListener('click', ()=>{
+        tabs.forEach(t=>t.setAttribute('aria-pressed','false'));
+        tab.setAttribute('aria-pressed','true');
+        const f = tab.dataset.filter;
+        cards.forEach(c=>{
+          const tags = c.getAttribute('data-tags') || '';
+          const show = f==='all' || tags.includes(f);
+          c.style.display = show ? '' : 'none';
+        });
+      });
+    });
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
